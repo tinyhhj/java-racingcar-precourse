@@ -2,11 +2,12 @@ package racingcar.domain;
 
 public class Car {
 	private String name;
-	private Status status = Status.STOP;
+	private Status status;
 	private int distance;
 
-	public Car(String name) {
-		this.name = name;
+	public Car(CarInfo info) {
+		this.name = info.getName();
+		this.status = info.getStatus();
 	}
 
 	public boolean isRunning() {
