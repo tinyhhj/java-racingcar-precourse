@@ -5,11 +5,13 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import racingcar.exception.InvalidNameException;
+
 public class CarTest {
 	CarInfo info;
 	@BeforeEach
 	public void setup() {
-		info = new CarInfo("testcar");
+		info = new CarInfo("test");
 	}
 	@Test
 	public void carStatusStopTest() {
@@ -42,4 +44,16 @@ public class CarTest {
 		car.run();
 		assertThat(car.toString()).isEqualTo(String.format("%s:%s",name,path));
 	}
+
+	@Test
+	public void carNameTest() {
+		String validName = "valid";
+		String invalidName = "invalid";
+		CarInfo validInfo = new CarInfo(validName);
+		assertThatThrownBy(()->{
+			CarInfo invalidInfo = new CarInfo(invalidName);
+		}).isInstanceOf(InvalidNameException.class)
+			.hasMessage(String.format("Invalid Name: %s",invalidName));
+	}
+
 }
