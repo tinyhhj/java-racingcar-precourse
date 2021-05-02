@@ -17,4 +17,23 @@ public class CarTest {
 		car.run();
 		assertThat(car.isRunning()).isTrue();
 	}
+
+	@Test
+	public void carStatusViewTest() {
+		String name = "testcar";
+		String path = "--";
+		Car car = new Car(name);
+		car.run();
+		car.run();
+		assertThat(car.toString()).isEqualTo(String.format("%s:%s",name,path));
+
+		path = "-----";
+		car = new Car(name);
+		car.run();
+		car.run();
+		car.run();
+		car.run();
+		car.run();
+		assertThat(car.toString()).isEqualTo(String.format("%s:%s",name,path));
+	}
 }
