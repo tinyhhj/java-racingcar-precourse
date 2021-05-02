@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.exception.InvalidNameException;
 
 public class CarTest {
+	String name = "test";
 	CarInfo info;
 	@BeforeEach
 	public void setup() {
-		info = new CarInfo("test");
+		info = new CarInfo(name);
 	}
 	@Test
 	public void carStatusStopTest() {
@@ -28,21 +29,19 @@ public class CarTest {
 
 	@Test
 	public void carStatusViewTest() {
-		String name = "testcar";
-		String path = "--";
+		String path = "-*";
 		Car car = new Car(info);
 		car.run();
 		car.run();
-		assertThat(car.toString()).isEqualTo(String.format("%s:%s",name,path));
+		assertThat(car.toString()).matches(String.format("%s:%s",name,path));
 
-		path = "-----";
 		car = new Car(info);
 		car.run();
 		car.run();
 		car.run();
 		car.run();
 		car.run();
-		assertThat(car.toString()).isEqualTo(String.format("%s:%s",name,path));
+		assertThat(car.toString()).matches(String.format("%s:%s",name,path));
 	}
 
 	@Test
@@ -56,4 +55,16 @@ public class CarTest {
 			.hasMessage(String.format("Invalid Name: %s",invalidName));
 	}
 
+
+	@Test
+	public void carRandomRunTest() {
+		Car car = new Car(info);
+		car.run();
+		car.run();
+		car.run();
+		car.run();
+		car.run();
+
+		assertThat(car.getDistance()).isLessThan(6);
+	}
 }
