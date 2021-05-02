@@ -3,20 +3,27 @@ package racingcar.view;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import racingcar.util.MessageContainer;
+
 public class RacingCarViewer {
-	PrintWriter writer = new PrintWriter(System.out);
+	PrintWriter writer = new PrintWriter(System.out,true);
 	Scanner scanner = new Scanner(System.in);
+
+	public RacingCarViewer() {
+	}
 
 	public RacingCarViewer(PrintWriter writer, Scanner scanner) {
 		this.writer = writer;
 		this.scanner = scanner;
 	}
 
-	public PrintWriter getWriter() {
-		return writer;
+	public String askCarName() {
+		writer.println(MessageContainer.ASK_CARNAME_INPUT_MESSAGE);
+		return scanner.nextLine();
 	}
 
-	public Scanner getScanner() {
-		return scanner;
+	public String askRacingTurnCount() {
+		writer.println(MessageContainer.ASK_RACING_TURN_COUNT);
+		return scanner.nextLine();
 	}
 }
