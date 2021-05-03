@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class RacingPlayer {
@@ -17,12 +18,25 @@ public class RacingPlayer {
 	}
 
 	public List<Car> calculateWinner() {
-		List<Car> winners = new ArrayList<>(players);
-		Collections.sort(winners);
-		int idx = winners.size()-1;
-		while (idx >= 0) {
+		int winnerDistance = getWinnerDistance();
+		List<Car> winners = new ArrayList<>();
+		for (Car player : players) {
+			addPlayerIfWinner(winners, player,winnerDistance);
 		}
-		System.out.println(players);
-		return null;
+		return winners;
+	}
+
+	private void addPlayerIfWinner(List<Car> winners, Car player, int winnerDistance) {
+		if (winnerDistance == player.getDistance()) {
+			winners.add(player);
+		}
+	}
+
+	private int getWinnerDistance() {
+		int winnerDistance = 0;
+		for (Car player: players) {
+			winnerDistance = Math.max(winnerDistance, player.getDistance());
+		}
+		return winnerDistance;
 	}
 }
