@@ -1,10 +1,12 @@
 package racingcar.domain;
 
-public class Car {
+import java.util.Comparator;
+
+public class Car implements Comparable<Car> {
 	private static final int MIN_VALUE_TO_GO_FORWARD = 4;
 	private String name;
 	private Status status;
-	private int distance;
+	protected int distance;
 	private Dice dice;
 
 	public Car(CarInfo info) {
@@ -18,6 +20,11 @@ public class Car {
 
 	public boolean isRunning() {
 		return status.equals(Status.RUNNING);
+	}
+
+	@Override
+	public int compareTo(Car o) {
+		return getDistance() - o.getDistance();
 	}
 
 	public enum Status {
