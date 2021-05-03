@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomDice implements Dice{
+public class RandomDice implements Dice {
 
 	@Override
 	public int roll() {

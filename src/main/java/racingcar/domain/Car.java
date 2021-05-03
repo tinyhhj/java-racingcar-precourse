@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.Comparator;
-
 public class Car implements Comparable<Car> {
 	private static final int MIN_VALUE_TO_GO_FORWARD = 4;
 	private String name;
@@ -10,12 +8,13 @@ public class Car implements Comparable<Car> {
 	private Dice dice;
 
 	public Car(CarInfo info) {
-		this(info,new RandomDice());
+		this(info, new RandomDice());
 	}
+
 	public Car(CarInfo info, Dice dice) {
 		this.name = info.getName();
 		this.status = info.getStatus();
-		this.dice  = dice;
+		this.dice = dice;
 	}
 
 	public boolean isRunning() {
@@ -28,7 +27,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public enum Status {
-		STOP,RUNNING
+		STOP, RUNNING
 	}
 
 	public void run() {
@@ -44,8 +43,8 @@ public class Car implements Comparable<Car> {
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(String.format("%s:",name));
-		for ( int i = 0; i < distance; i++) {
+		buffer.append(String.format("%s:", name));
+		for (int i = 0; i < distance; i++) {
 			buffer.append("-");
 		}
 		return buffer.toString();
@@ -53,5 +52,9 @@ public class Car implements Comparable<Car> {
 
 	public int getDistance() {
 		return distance;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

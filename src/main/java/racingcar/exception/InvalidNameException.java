@@ -1,11 +1,7 @@
 package racingcar.exception;
 
-public class InvalidNameException extends RuntimeException {
+public class InvalidNameException extends RacingCarException {
 	public InvalidNameException(String message) {
 		super(message);
-	}
-
-	public InvalidNameException(Throwable cause) {
-		super(cause);
 	}
 }

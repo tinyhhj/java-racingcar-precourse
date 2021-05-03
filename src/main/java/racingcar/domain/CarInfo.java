@@ -9,8 +9,9 @@ public class CarInfo {
 	private Car.Status status;
 
 	public CarInfo(String name) {
-		this(name,Car.Status.STOP);
+		this(name, Car.Status.STOP);
 	}
+
 	public CarInfo(String name, Car.Status status) {
 		this.name = name;
 		this.status = status;
@@ -31,7 +32,7 @@ public class CarInfo {
 
 	private void validate() {
 		if (!isValidName()) {
-			throw new InvalidNameException(String.format("Invalid Name: %s",name));
+			throw new InvalidNameException(String.format("Invalid Name: %s", name));
 		}
 	}
 }

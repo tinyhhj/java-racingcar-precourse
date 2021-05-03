@@ -6,7 +6,7 @@ import java.util.Scanner;
 import racingcar.util.MessageContainer;
 
 public class RacingCarViewer {
-	PrintWriter writer = new PrintWriter(System.out,true);
+	PrintWriter writer = new PrintWriter(System.out, true);
 	Scanner scanner = new Scanner(System.in);
 
 	public RacingCarViewer() {
@@ -25,5 +25,13 @@ public class RacingCarViewer {
 	public String askRacingTurnCount() {
 		writer.println(MessageContainer.ASK_RACING_TURN_COUNT);
 		return scanner.nextLine();
+	}
+
+	public void showGameResult(String[] winners) {
+		writer.println(String.format(MessageContainer.GAME_RESULT_MESSAGE, String.join(",", winners)));
+	}
+
+	public void println(String message) {
+		writer.println(message);
 	}
 }

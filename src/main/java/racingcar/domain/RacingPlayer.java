@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class RacingPlayer {
@@ -21,9 +19,9 @@ public class RacingPlayer {
 		int winnerDistance = getWinnerDistance();
 		List<Car> winners = new ArrayList<>();
 		for (Car player : players) {
-			addPlayerIfWinner(winners, player,winnerDistance);
+			addPlayerIfWinner(winners, player, winnerDistance);
 		}
-		return winners;
+		return Collections.unmodifiableList(winners);
 	}
 
 	private void addPlayerIfWinner(List<Car> winners, Car player, int winnerDistance) {
@@ -34,9 +32,14 @@ public class RacingPlayer {
 
 	private int getWinnerDistance() {
 		int winnerDistance = 0;
-		for (Car player: players) {
+		for (Car player : players) {
 			winnerDistance = Math.max(winnerDistance, player.getDistance());
 		}
 		return winnerDistance;
 	}
+
+	public List<Car> getPlayers() {
+		return Collections.unmodifiableList(players);
+	}
+
 }
