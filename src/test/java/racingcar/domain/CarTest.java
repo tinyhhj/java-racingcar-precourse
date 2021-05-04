@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.exception.InvalidNameException;
@@ -14,20 +15,25 @@ public class CarTest {
 	public void setup() {
 		info = new CarInfo(name);
 	}
+
 	@Test
+	@DisplayName("플레이어 Stop 상태 테스트")
 	public void carStatusStopTest() {
 		Car car = new Car(info);
 		assertThat(car.isRunning()).isFalse();
 	}
 
 	@Test
+	@DisplayName("플레이어 Running 상태 테스트")
 	public void carStatusRunningTest() {
+		CarInfo info = new CarInfo(name,Car.Status.RUNNING);
 		Car car = new Car(info);
 		car.run();
 		assertThat(car.isRunning()).isTrue();
 	}
 
 	@Test
+	@DisplayName("플레이어 현재상태 출력 테스트")
 	public void carStatusViewTest() {
 		String path = "-*";
 		Car car = new Car(info);
@@ -45,6 +51,7 @@ public class CarTest {
 	}
 
 	@Test
+	@DisplayName("플레이어 이름 검증 테스트")
 	public void carNameTest() {
 		String validName = "valid";
 		String invalidName = "invalid";
@@ -57,6 +64,7 @@ public class CarTest {
 
 
 	@Test
+	@DisplayName("플레이어 Run메소드 테스트")
 	public void carRandomRunTest() {
 		Car car = new Car(info);
 		car.run();

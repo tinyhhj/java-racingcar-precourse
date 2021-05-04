@@ -5,10 +5,12 @@ import static org.assertj.core.api.Assertions.*;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarViewerTest {
 	@Test
+	@DisplayName("사용자 input 테스트")
 	public void viewTest() {
 		String names = "hello,test,benz,super";
 		String count = "6";
